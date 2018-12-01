@@ -1,5 +1,3 @@
-require('dotenv').load();
-
 import React, { 
   Component
  } from 'react';
