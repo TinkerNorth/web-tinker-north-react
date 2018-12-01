@@ -29,13 +29,8 @@ jobs:
 
   deploy:
     steps:
-      - run:
-        name: Install awscli
-        command: sudo pip install awscli
-
-      - run:
-        name: Deploy to S3
-        command: aws s3 sync . s3://web-tinker-north-react/ --delete
+      - run: sudo pip install awscli
+      - run: aws s3 sync . s3://web-tinker-north-react/ --delete
 
   workflows:
     version: 2
