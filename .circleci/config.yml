@@ -28,29 +28,57 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-  deploy:
+  deploy:  
     docker:
       - image: circleci/node:7.10
-      
+
     working_directory: ~/repo
 
     steps:
-      - run:
-        name: Install awscli
-        command: sudo pip install awscli
+      - checkout
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
 
       - run:
-        name: Deploy to S3
-        command: aws s3 sync build/ s3://web-tinker-north-react/ --delete
+          name: Installing Dependencies
+          command: npm install
+
+      - run:
+          name: Building
+          command: npm run build
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run:
+          name: Installing pip
+          command: sudo apt-get install python-pip python-dev build-essential 
+      - run:
+          name: Install awscli
+          command: sudo pip install awscli
+
+      - run:
+          name: Show files
+          command: ls -al
+
+      - run:
+          name: Deploy to S3
+          command: aws s3 sync build s3://web-tinker-north-react/ --delete
 
 workflows:
   version: 2
-  build-deploy:
+  build-and-deploy:
     jobs:
-      - build
+      - build:
+          filters:
+            branches:
+              ignore: master
       - deploy:
-          requires:
-            - build
           filters:
             branches:
               only: master
