@@ -29,8 +29,9 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
   deploy:  
-    machine:
-        enabled: true    
+    docker:
+      - image: circleci/node:7.10
+
     working_directory: ~/repo
 
     steps:
@@ -71,7 +72,7 @@ workflows:
   build-and-deploy:
     jobs:
       - build:
-        filters:
+          filters:
             ignore:
               only: master
       - deploy:
