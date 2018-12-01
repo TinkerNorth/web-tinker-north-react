@@ -56,6 +56,9 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run:
+          name: Installing pip
+          command: sudo apt-get install python-pip python-dev build-essential 
+      - run:
           name: Install awscli
           command: sudo pip install awscli
 
