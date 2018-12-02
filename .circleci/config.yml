@@ -68,7 +68,7 @@ jobs:
 
       - run:
           name: Deploy to S3
-          command: aws s3 sync build s3://tinkernorth.ca/ --delete
+          command: aws s3 sync build s3://tinkernorth.com/ --delete
 
 workflows:
   version: 2
