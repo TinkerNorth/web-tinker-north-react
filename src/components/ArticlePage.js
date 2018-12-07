@@ -88,8 +88,12 @@ class ArticlePage extends Component {
         results.push(<li>{this.renderInnerRichParagraph(contentItem.content)}</li>);
       } else if (contentItem.nodeType === 'embedded-asset-block'){
         results.push(<p><Image src={contentItem.data.target.fields.file.url} width="100%"/></p>);
+      } else if (contentItem.nodeType === 'embedded-entry-block') {
+        console.log(contentItem);
+        console.log(contentItem.nodeType);
       } else {
-        console.log(contentItem.NodeType);
+        console.log(contentItem);
+        console.log(contentItem.nodeType);
       }
       
     }
@@ -140,6 +144,8 @@ class ArticlePage extends Component {
         bodyList.push(<h3>{bodyItem.fields.subtitle}</h3>);
       } else if (contentType === "blogArticleImage"){
         bodyList.push(<p><Image src={bodyItem.fields.image.fields.file.url} width="100%"/></p>);
+      } else {
+        console.log(contentType);
       }
     }
 
