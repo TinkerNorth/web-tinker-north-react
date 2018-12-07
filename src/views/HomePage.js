@@ -6,18 +6,18 @@ import './HomePage.css';
 import AggregationPage from '../components/AggregationPage';
 import ArticlePage from '../components/ArticlePage';
 import { 
-  Navbar
+  Navbar,
+  Image
 } from 'react-bootstrap';
 
 class HomePage extends Component {
-
   render() {
     return (
       <div>
         <Navbar collapseOnSelect fixedTop>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="/">Tinker North</a>
+              <a href="/"><Image src="logo.png" height="25px"/></a>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
