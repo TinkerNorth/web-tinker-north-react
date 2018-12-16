@@ -60,19 +60,15 @@ jobs:
           command: mkdir ~/.aws
       - run:
           name: creating credentials file
-          command: echo '[default]\naws_access_key_id=$aws_access_key_id\naws_secret_access_key=$aws_secret_access_key' > ~/.aws/credentials
+          command: echo '[default]' > ~/.aws/credentials && echo 'aws_access_key_id=$aws_access_key_id' >> ~/.aws/credentials && echo 'aws_secret_access_key=$aws_secret_access_key' >> ~/.aws/credentials
 
       - run:
           name: cat credentials file
           command: cat ~/.aws/credentials
 
       - run:
-          name: cat credentials
-          command: echo '[default]\naws_access_key_id=$aws_access_key_id\naws_secret_access_key=$aws_secret_access_key' 
-
-      - run:
           name: creating config file
-          command: echo '[default]\nregion=us-east-1\noutput=json' > ~/.aws/config
+          command: echo '[default]' > ~/.aws/config && echo 'region=us-east-1' > ~/.aws/config && echo 'output=json' >> ~/.aws/config
 
       - run:
           name: Installing pip
