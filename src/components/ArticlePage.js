@@ -51,7 +51,7 @@ class ArticlePage extends Component {
 
     var imageUrl = state.blog.fields.thumbnail.fields.file.url;
 
-    return <Image src={imageUrl} width="100%" />;
+    return <Image className="main-art" src={imageUrl} />;
   }
 
   renderInnerRichParagraph(contentList) {
