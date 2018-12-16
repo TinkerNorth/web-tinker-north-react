@@ -60,7 +60,15 @@ jobs:
           command: mkdir ~/.aws
       - run:
           name: creating credentials file
-          command: echo '[default]\naws_access_key_id=$AWS_ACCESS_KEY_ID\naws_secret_access_key=$AWS_SECRET_ACCESS_KEY' > ~/.aws/credentials
+          command: echo '[default]\naws_access_key_id=$aws_access_key_id\naws_secret_access_key=$aws_secret_access_key' > ~/.aws/credentials
+
+      - run:
+          name: cat credentials file
+          command: cat ~/.aws/credentials
+
+      - run:
+          name: cat credentials
+          command: echo '[default]\naws_access_key_id=$aws_access_key_id\naws_secret_access_key=$aws_secret_access_key' 
 
       - run:
           name: creating config file
