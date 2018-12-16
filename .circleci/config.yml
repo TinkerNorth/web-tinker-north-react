@@ -56,6 +56,17 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run:
+          name: creating credentials filder
+          command: mkdir ~/.aws
+      - run:
+          name: creating credentials file
+          command: echo "[default]\naws_access_key_id=$aws_access_key_id\naws_secret_access_key=$aws_secret_access_key" > ~/.aws/credentials
+
+      - run:
+          name: creating config file
+          command: echo "[default]\nregion=us-east-1\noutput=json" > ~/.aws/config
+
+      - run:
           name: Installing pip
           command: sudo apt-get install python-pip python-dev build-essential 
       - run:
