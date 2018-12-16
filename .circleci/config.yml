@@ -68,7 +68,7 @@ jobs:
 
       - run:
           name: creating config file
-          command: echo '[default]' > ~/.aws/config && echo 'region=us-east-1' > ~/.aws/config && echo 'output=json' >> ~/.aws/config
+          command: echo '[default]' > ~/.aws/config && echo 'region=us-east-1' >> ~/.aws/config && echo 'output=json' >> ~/.aws/config
 
       - run:
           name: Installing pip
