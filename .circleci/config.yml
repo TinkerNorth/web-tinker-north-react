@@ -58,13 +58,10 @@ jobs:
       - run:
           name: creating credentials filder
           command: mkdir ~/.aws
+          
       - run:
           name: creating credentials file
           command: echo '[default]' > ~/.aws/credentials && echo "aws_access_key_id=$aws_access_key_id" >> ~/.aws/credentials && echo "aws_secret_access_key=$aws_secret_access_key" >> ~/.aws/credentials
-
-      - run:
-          name: cat credentials file
-          command: cat ~/.aws/credentials
 
       - run:
           name: creating config file
@@ -78,12 +75,8 @@ jobs:
           command: sudo pip install awscli
 
       - run:
-          name: Show files
-          command: ls -al
-
-      - run:
           name: Deploy to S3
-          command: aws s3 sync build s3://tinkernorth.com/ --delete
+          command: aws s3 sync build s3://www.tinkernorth.com/ --delete
 
 workflows:
   version: 2
