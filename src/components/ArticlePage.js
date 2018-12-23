@@ -84,6 +84,9 @@ class ArticlePage extends Component {
       } else if (contentItem.nodeType === 'unordered-list'){
         results.push(<ul>{this.renderInnerRichParagraph(contentItem.content)}</ul>);
         this.renderInnerRichParagraph(contentItem.content)
+      } else if (contentItem.nodeType === 'ordered-list'){
+        results.push(<ol>{this.renderInnerRichParagraph(contentItem.content)}</ol>);
+        this.renderInnerRichParagraph(contentItem.content)
       } else if (contentItem.nodeType === 'list-item'){
         results.push(<li>{this.renderInnerRichParagraph(contentItem.content)}</li>);
       } else if (contentItem.nodeType === 'embedded-asset-block'){
