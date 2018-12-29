@@ -19,7 +19,6 @@ class HomePage extends Component {
             <Navbar.Brand>
               <a href="/"><Image src="logo.png" height="25px"/></a>
             </Navbar.Brand>
-            <Navbar.Toggle />
           </Navbar.Header>
         </Navbar>
         <Switch>
